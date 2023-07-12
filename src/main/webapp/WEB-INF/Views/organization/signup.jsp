@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sf="http://www.w3.org/1999/xhtml" lang="en">
  <%@ taglib uri='http://java.sun.com/jsp/jstl/core' prefix='c'%>
@@ -21,42 +20,32 @@
 
 
 	<h1 class="text-center text-primary">Signup Page</h1>
-	<form style="margin : 3% 30%" method='POST' action="submitUser">
+	<form style="margin : 3% 30%" method='POST' action="submitOrganizationSignup">
 		<div class="form-group">
-			<label for="username">Username</label> <input name="userName"
+			<label for="username">organizationName</label> <input name="organizationName"
 				type="text" class="form-control" id="exampleInputEmail1"
 				aria-describedby="emailHelp" placeholder="Enter email"> <small
-				id="username" class="form-text text-muted">Please Enter unique Username.</small>
+				id="username" class="form-text text-muted">Please Enter unique organizationName.</small>
 		</div>
 		<div class="form-group">
-			<label for="firstName">First Name</label> <input type="text"
-				class="form-control" id="firstName" name="firstName"
-				placeholder="First Name">
-		</div>
-
-		<div class="form-group">
-			<label for="lastName">Last Name</label> <input type="text"
-				class="form-control" id="lastName" name="lastName"
-				placeholder="Last Name">
+			<label for="firstName">address</label> <input type="text"
+				class="form-control" id="firstName" name="address"
+				placeholder="address">
 		</div>
 
-
 		<div class="form-group">
-			<label for="age">Age</label> <input type="text" class="form-control"
-				id="age" name="age" placeholder="Age" pattern="[0-9]{2}">
-		</div>
-		<div class="form-group">
-			<label for="phoneNumber">Phone Number</label> <input type="tel"
+			<label for="phoneNumber">phoneNumber</label> <input type="text"
 				class="form-control" id="phoneNumber" name="phoneNumber"
-				placeholder="phoneNumber" pattern="[6789][0-9]{9}" title="please enter 10 digit phone number">
+				placeholder="phoneNumber">
 		</div>
+
+		
 		<div class="form-group">
-			<label for="Email">Email</label> <input type="email"
-				class="form-control" id="Email" name="emailId"
-				placeholder="Email">
-				<small
-				id="username" class="form-text text-muted">We will never share your email with anyone.</small>
+			<label for="email">email</label> <input type="email"
+				class="form-control" id="email" name="email"
+				placeholder="email">
 		</div>
+		
 		<div class="form-group">
 			<label for="password">Password</label> <input type="password"
 				class="form-control" id="password" name="password"

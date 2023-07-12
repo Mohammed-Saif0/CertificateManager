@@ -59,6 +59,9 @@
 				<value>
 					com.Models.User
 				</value>
+				<value>
+					com.Models.Organization
+				</value>
 			</list>
 		</property>
 	</bean>
