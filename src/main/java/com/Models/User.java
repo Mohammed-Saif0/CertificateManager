@@ -8,8 +8,6 @@ import javax.persistence.Id;
 @Entity
 public class User {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int id;
 	private String userName;
 	private String firstName;
 	private String lastName;
@@ -17,12 +15,7 @@ public class User {
 	private String phoneNumber;
 	private String emailId;
 	private String password;
-	public int getId() {
-		return id;
-	}
-	public void setId(int id) {
-		this.id = id;
-	}
+	
 	public String getUserName() {
 		return userName;
 	}
@@ -69,10 +62,10 @@ public class User {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public User(int id, String userName, String firstName, String lastName, int age, String phoneNumber, String emailId,
+	public User(String userName, String firstName, String lastName, int age, String phoneNumber, String emailId,
 			String password) {
 		super();
-		this.id = id;
+		
 		this.userName = userName;
 		this.firstName = firstName;
 		this.lastName = lastName;

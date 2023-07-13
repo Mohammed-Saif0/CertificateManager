@@ -8,21 +8,14 @@ import javax.persistence.Id;
 
 @Entity
 public class Organization {
+	
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int id;
-	@Column(nullable = false, unique = true)
 	private String organizationName;
 	private String address;
 	private String phoneNumber;
 	private String email;
 	private String password;
-	public int getId() {
-		return id;
-	}
-	public void setId(int id) {
-		this.id = id;
-	}
+	
 	public String getOrganizationName() {
 		return organizationName;
 	}
@@ -57,10 +50,9 @@ public class Organization {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Organization(int id, String organizationName, String address, String phoneNumber, String email,
+	public Organization( String organizationName, String address, String phoneNumber, String email,
 			String password) {
 		super();
-		this.id = id;
 		this.organizationName = organizationName;
 		this.address = address;
 		this.phoneNumber = phoneNumber;
@@ -69,7 +61,7 @@ public class Organization {
 	}
 	@Override
 	public String toString() {
-		return "Organization [id=" + id + ", organizationName=" + organizationName + ", address=" + address
+		return "Organization [id="  + ", organizationName=" + organizationName + ", address=" + address
 				+ ", phoneNumber=" + phoneNumber + ", email=" + email + ", password=" + password + "]";
 	}
 	

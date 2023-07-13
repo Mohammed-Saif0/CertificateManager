@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 
 import com.Dao.CertificateDao;
 import com.Models.Certificate;
-
+import java.util.*;
 @Service
 public class CertificateService {
 	@Autowired
@@ -17,5 +17,10 @@ public class CertificateService {
 	
 	public boolean check(String certificateName) {
 		return this.certificateDao.checkCertificateName(certificateName);
+	}
+	
+	public List<Certificate> getCertificate(String username)
+	{
+		return this.certificateDao.getUserCertificate(username);
 	}
 }

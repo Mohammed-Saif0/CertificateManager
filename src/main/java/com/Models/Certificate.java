@@ -54,6 +54,11 @@ public class Certificate {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	@Override
+	public String toString() {
+		return "Certificate [id=" + id + ", org=" + org + ", certificateName=" + certificateName + ", user=" + user
+				+ "]";
+	}
 	
 	
 }

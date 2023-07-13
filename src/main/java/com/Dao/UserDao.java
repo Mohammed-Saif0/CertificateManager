@@ -16,8 +16,8 @@ public class UserDao {
 	private HibernateTemplate hibernateTemplate;
 	
 	@Transactional
-	public int saveUser(User user) {
-		return (Integer)this.hibernateTemplate.save(user);
+	public String saveUser(User user) {
+		return (String)this.hibernateTemplate.save(user);
 	}
 	
 	public boolean checkUsernameExists(String username) {
@@ -38,7 +38,7 @@ public class UserDao {
 	}
 	
 	public boolean authUsernamePassword(String username, String password) {
-
+		
 		String query = "from User where userName=:u and password=:p";
 		SessionFactory factory = hibernateTemplate.getSessionFactory();
 		Session session = factory.openSession();
@@ -47,16 +47,22 @@ public class UserDao {
 		q.setParameter("p", password);
 		
 		try {
-			q.getFirstResult();
+			
 			System.out.println("successfully executed");
+			
 			System.out.println(username);
 			System.out.println(password);
-			return true;
+			return q.uniqueResult()!=null;
 		}
 		catch(Exception e) {
 			System.out.println(e);
 			System.out.println("Failed to execute");
 			return false;
 		}
+	}
+	
+	public User getUser(String username) {
+		User user = this.hibernateTemplate.get(User.class,username);
+		return user;
 	}
 }

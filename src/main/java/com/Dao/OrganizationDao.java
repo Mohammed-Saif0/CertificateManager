@@ -6,6 +6,7 @@ import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate5.HibernateTemplate;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.Models.Organization;
 
@@ -13,9 +14,12 @@ import com.Models.Organization;
 public class OrganizationDao {
 	@Autowired
 	private HibernateTemplate hibernateTemplate;
-
-	public int saveOrg(Organization org) {
-		return (Integer) this.hibernateTemplate.save(org);
+	
+	@Transactional
+	public String saveOrg(Organization org) {
+		String res = (String)this.hibernateTemplate.save(org);
+		System.out.println("This is the res  = "+res );
+		return res;
 	}
 
 	public boolean checkUsernameExists(String username) {
@@ -43,7 +47,7 @@ public class OrganizationDao {
 		q.setParameter("p", password);
 
 		try {
-			q.getFirstResult();
+			q.uniqueResult();
 			System.out.println("successfully executed");
 			System.out.println(username);
 			System.out.println(password);
@@ -53,5 +57,11 @@ public class OrganizationDao {
 			System.out.println("Failed to execute");
 			return false;
 		}
+	}
+	
+	public Organization getOrg(String orgName) {
+		Organization org = this.hibernateTemplate.get(Organization.class, orgName);
+		
+		return org;
 	}
 }

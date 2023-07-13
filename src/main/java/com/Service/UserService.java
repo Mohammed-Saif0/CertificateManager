@@ -11,7 +11,7 @@ public class UserService {
 	@Autowired
 	private UserDao userdao;
 	
-	public int createUser(User user) {
+	public String createUser(User user) {
 		return this.userdao.saveUser(user);
 	}
 	
@@ -21,5 +21,9 @@ public class UserService {
 	
 	public boolean auth(String username, String password) {
 		return this.userdao.authUsernamePassword(username, password);
+	}
+	
+	public User get(String username) {
+		return this.userdao.getUser(username);
 	}
 }

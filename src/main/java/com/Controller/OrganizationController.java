@@ -14,7 +14,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.Models.Certificate;
 import com.Models.Organization;
+import com.Models.User;
 import com.Service.CertificateService;
 import com.Service.OrganizationService;
 import com.Service.UserService;
@@ -85,6 +87,15 @@ public class OrganizationController {
 			System.out.print(path);
 			byte[] data = file.getBytes();
 			try {
+				
+				Organization org = this.orgService.get(orgname);
+				User usr = this.userService.get(username);
+				
+				Certificate cer = new Certificate();
+				cer.setOrg(org);
+				cer.setUser(usr);
+				cer.setCertificateName(name);
+				certificateService.create(cer);
 				FileOutputStream fout = new FileOutputStream(path);
 				fout.write(data);
 				
@@ -92,10 +103,13 @@ public class OrganizationController {
 				fout.close();
 			} catch (Exception e) {
 				// System.: handle exception
+				System.out.println(e);
 				System.out.println("failed");
 			}
 		}
-		
+		else {
+			System.out.println("else statement this is ");
+		}
 		return "redirect:/orghome";
 	}
 

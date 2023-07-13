@@ -12,7 +12,7 @@ public class OrganizationService {
 	@Autowired
 	private OrganizationDao orgdao;
 	@Transactional
-	public int createOrg(Organization org) {
+	public String createOrg(Organization org) {
 		return orgdao.saveOrg(org);
 	}
 	
@@ -22,5 +22,9 @@ public class OrganizationService {
 	
 	public boolean auth(String username,String password) {
 		return this.orgdao.authUsernamePassword(username, password);
+	}
+	
+	public Organization get(String orgName) {
+		return this.orgdao.getOrg(orgName);
 	}
 }
